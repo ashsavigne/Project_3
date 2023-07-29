@@ -1,9 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
-// this is not main i do not know why i named it that so sorry lmao
-
 struct Song {
     // class variables
     string name;
