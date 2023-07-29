@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+// this is not main i do not know why i named it that so sorry lmao
+
 struct Song {
     // class variables
     string name;
@@ -21,12 +23,10 @@ public:
 };
 
 class Playlist{
-    int size;
-    int cap;
 public:
     Song* s;
     vector<Song*> songs;
-    Playlist() : size(0), cap(1), songs(), s(new Song[size]){}
+    Playlist() : songs()}
     void PrintAll();
     void PrintN(int n);
     void Insert(Song* song, const string& adj, bool exp, int year, const string& artist);
