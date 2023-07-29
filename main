@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Song {
+    // class variables
+    string name;
+    string album;
+    string artist;
+    bool exp;
+    int dance;
+    int key;
+    int energy;
+    int loud;
+    int year;
+    int tempo;
+    int valence;
+    int rating;
+public:
+    void Deserialize(istringstream& stream);
+};
+
+class Playlist{
+    int size;
+    int cap;
+public:
+    Song* s;
+    vector<Song*> songs;
+    Playlist() : size(0), cap(1), songs(), s(new Song[size]){}
+    void PrintAll();
+    void PrintN(int n);
+    void Insert(Song* song, const string& adj, bool exp, int year, const string& artist);
+
+    ~Playlist();
+};
