@@ -4,7 +4,7 @@
 #include <string>
 
 void Playlist::Insert(Song* song, const string& adj, bool exp, int year, const string& artist){
-    if ((exp && exp != song->explicit_cont) || (year != 0 && year != song->year) || (artist != "any" && artist != song->artist)){
+    if ((exp && exp != song->explicit_cont) || (year != 0 && song->year >= year && song->year < year + 10) || (artist != "any" && artist != song->artist)){
         delete song;
         return;
     }
