@@ -4,7 +4,7 @@
 #include <string>
 
 void Playlist::Insert(Song* song, const string& adj, bool exp, int year, const string& artist){
-    if (exp != song->exp || (year != 0 && year != song->year) || (adj != "any" && artist != song->artist)){
+    if ((exp && exp != song->explicit_cont) || (year != 0 && year != song->year) || (artist != "any" && artist != song->artist)){
         delete song;
         return;
     }
@@ -12,48 +12,53 @@ void Playlist::Insert(Song* song, const string& adj, bool exp, int year, const s
         song->rating = song->tempo + song->dance * 100 + song->energy * 100;
         songs.push_back(song);
     }
-    else if (adj == "happy" && song->tempo >= 120 && song->tempo <= 140 && song->dance >= 60 && song->dance <= 80 && song->energy >= 60 && song->energy <= 80 && song->valence >= 60 && song->valence <= 80) {
-        song->rating = song->tempo + song->dance * 100 + song->energy * 100;
-        songs.push_back(song);
-        cout << "blah";
-    }
-    else if (adj == "sad" && song->tempo >= 60 && song->tempo <= 80 && song->energy <= 30 && song->dance < 30 && song->loud < 40 && song->valence < 40){
-        song->rating = 180 - song->tempo + (100 - song->loud) + (100 - song->dance) + (100 - song->energy);
-        songs.push_back(song);
-    }
-    else if (adj == "relax" && song->tempo >= 60 && song->tempo <= 80 && song->energy >= 40 && song->energy <= 60 && song->dance >= 40 && song->dance <= 60 && song->loud <= 20 && song->valence >= 40 && song->valence <= 60 && song->loud <= 40){
-        song->rating = 180 - song->tempo + (100 - song->loud) + (100 - song->dance) + (100 - song->energy);
-        songs.push_back(song);
-    }
-    else if (adj == "vinctory" && song->tempo >= 100 && song->loud >= 80){
+    else if (adj == "happy" && song->tempo >= 120 && song->tempo <= 140 && song->dance >= 70 && song->energy >= 50 && song->energy <= 90 && song->valence >= 70 && song->valence <= 90 && song->loud >= -20 && song->mode == 1) {
         song->rating = song->tempo + song->dance * 100 + song->energy * 100;
         songs.push_back(song);
     }
-
-    else if (adj == "angry" && song->tempo >= 140 && song->valence <= 50 && song->energy >= 80 && song->dance >= 80){
+    else if (adj == "sad" && song->tempo >= 50 && song->tempo <= 80 && song->energy <= 40 && song->dance <= 40 && song->loud >= -60 && song->loud <= -30 && song->valence < 40 && song->mode == 0){
+        song->rating = 180 - song->tempo + (100 - song->dance) + (100 - song->energy);
+        songs.push_back(song);
+    }
+    else if (adj == "relax" && song->tempo >= 60 && song->tempo <= 90 && song->energy >= 10 && song->energy <= 50 && song->dance <= 40 && song->loud >= -40 && song->loud <= -20 && song->valence >= 30 && song->valence <= 70 && song->mode == 0){
+        song->rating = 180 - song->tempo + (100 - song->dance) + (100 - song->energy);
+        songs.push_back(song);
+    }
+    else if (adj == "vinctory" && song->tempo >= 120 && song->tempo <= 140 && song->loud >= -20 && song->valence >=70 && song->energy >= 50 && song->energy <= 90 && song->dance >= 70 && song->mode == 1){
+        song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+        songs.push_back(song);
+    }
+    else if (adj == "angry" && song->tempo >= 130 && song->valence <= 60 && song->valence >= 30 && song->energy >= 50 && song->energy >= 70 && song->dance >= 70 && song->loud >= -10){
         song->rating = song->tempo + song->dance * 100 + song->energy * 100 + song->loud;
         songs.push_back(song);
     }
-    else if (adj == "Din" && song->tempo >= 60 && song->tempo <= 80 && song->dance <= 60 && song->energy <= 20 && song->loud <= 20){
-        song->rating = 180 - song->tempo + (100 - song->loud) + (100 - song->dance) + (100 - song->energy);
+    else if (adj == "Din" && song->tempo >= 50 && song->tempo <= 80 && song->dance <= 50 && song->dance >= 10 && song->energy >= 70 && song->loud >= -40 && song->loud <= -20){
+        song->rating = 180 - song->tempo + (100 - song->dance) + (100 - song->energy);
         songs.push_back(song);
     }
-    else if (adj == "party" && song->tempo >= 120 && song->tempo <= 140 && song->energy >= 80 && song->dance >= 80 && song->valence >= 80){
+    else if (adj == "party" && song->tempo >= 120&& song->energy >= 80 && song->dance >= 80 && song->valence >= 80 && song->loud >= -20 && song->mode == 1){
         song->rating = song->tempo + song->dance * 100 + song->energy * 100;
         songs.push_back(song);
     }
-    else if (adj == "workout" && song->tempo >= 140 && song->valence >= 50 && song->energy >= 80 && song->dance >= 80 && song->loud >= 60){
+    else if (adj == "workout" && song->tempo >= 100 && song->tempo <= 150 && song->valence >= 50 && song->valence <= 90 && song->energy >= 70 && song->dance >= 50 && song->dance <= 90 && song->loud >= -10 && song->mode == 1){
         song->rating = song->tempo + song->dance * 100 + song->energy * 100 + song->loud * 100;
         songs.push_back(song);
     }
-    else if (adj == "Afterparty" && song->tempo >= 80 && song->tempo <= 120 && song->dance <= 50 && song->dance >= 30 && song->energy <= 50 && song->energy >= 30 && song->valence >= 60 && (song->key == 10 || song->key == 8) && song->loud <= 50){
+    else if (adj == "Afterparty" && song->tempo >= 90 && song->tempo <= 120 && song->dance >= 50 && song->dance <= 80 && song->energy <= 80 && song->energy >= 40 && song->valence >= 30 && song->valence <= 80 && song->loud >= -20){
         song->rating = song->tempo + song->dance * 100 + song->energy * 100;
         songs.push_back(song);
     }
+    else if (adj == "Focus" && song->tempo <= 100 && song->tempo >= 60 && song->dance <= 40 && song->dance >= 10 && song->energy >= 10 && song->energy <= 50 && song->loud >= -40 && song->loud <= -20){
+        song->rating = (180 - song->tempo) + (100 - song->dance) + (100 - song->energy);
+        songs.push_back(song);
+    }
+    else if (adj == "Sleepy" && song->tempo >= 40 && song->tempo <= 60 && song->dance <= 30 && song->valence <= 40 && song->energy <= 30 && song->loud <= -30 && song->loud >= -60){
+        song->rating = (180 - song->tempo) + (100 - song->dance) + (100 - song->energy);
+        songs.push_back(song);
+
+    }
     else
         delete song;
-
-
 }
 void Playlist::PrintAll(){
     if (songs.empty()){
