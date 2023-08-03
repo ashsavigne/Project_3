@@ -132,8 +132,10 @@ void Song::Deserialize(istringstream& stream) {
     if (!getline(stream, token, ','))
         throw runtime_error("Error: missing artist");
     try{
-        token.erase(0, 2);
-        token.erase(token.size() - 2, 2);
+        while (token[0] == '\'' || token[0] == '[')
+            token.erase(0, 1);
+        while (token[token.size() - 1] == '\'' || token[token.size() - 1] == ']')
+            token.erase(token.size() - 1, 1);
         this->artist = token;
     }
     catch (out_of_range&){
