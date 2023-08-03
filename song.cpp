@@ -15,7 +15,7 @@ void Playlist::Insert(Song* song, const string& option, const string& adj, bool 
         int lower = ((song->year % 100) / 10) * 10;
         int upper = lower + 10;
         if (year%100 >= lower && year%100 <= upper) {
-            song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+            song->rating = song->tempo + song->dance + song->energy;
             if (song->rating != 0) {
                 songs.push_back(song);
             }
@@ -25,7 +25,7 @@ void Playlist::Insert(Song* song, const string& option, const string& adj, bool 
         if (option == "mood") {
             if (adj == "happy" && song->tempo >= 120 && song->tempo <= 140 && song->dance >= 60 && song->dance <= 80 &&
                 song->energy >= 60 && song->energy <= 80 && song->valence >= 60 && song->valence <= 80) {
-                song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+                song->rating = song->tempo + song->dance + song->energy;
                 songs.push_back(song);
             } else if (adj == "sad" && song->tempo >= 60 && song->tempo <= 80 && song->energy <= 30 &&
                        song->dance < 30 && song->loud < 40 && song->valence < 40) {
@@ -37,11 +37,11 @@ void Playlist::Insert(Song* song, const string& option, const string& adj, bool 
                 song->rating = 180 - song->tempo + (100 - song->loud) + (100 - song->dance) + (100 - song->energy);
                 songs.push_back(song);
             } else if (adj == "victory" && song->tempo >= 100 && song->loud >= 80) {
-                song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+                song->rating = song->tempo + song->dance + song->energy;
                 songs.push_back(song);
             } else if (adj == "angry" && song->tempo >= 140 && song->valence <= 50 && song->energy >= 80 &&
                        song->dance >= 80) {
-                song->rating = song->tempo + song->dance * 100 + song->energy * 100 + song->loud;
+                song->rating = song->tempo + song->dance + song->energy + song->loud;
                 songs.push_back(song);
             }
         } else if (option == "event") {
@@ -55,16 +55,16 @@ void Playlist::Insert(Song* song, const string& option, const string& adj, bool 
                 songs.push_back(song);
             } else if (adj == "workout" && song->tempo >= 140 && song->valence >= 50 && song->energy >= 80 &&
                        song->dance >= 80 && song->loud >= 60) {
-                song->rating = song->tempo + song->dance * 100 + song->energy * 100 + song->loud * 100;
+                song->rating = song->tempo + song->dance + song->energy + song->loud ;
                 songs.push_back(song);
             } else if (adj == "after party" && song->tempo >= 80 && song->tempo <= 120 && song->dance <= 50 &&
                        song->dance >= 30 && song->energy <= 50 && song->energy >= 30 && song->valence >= 60 &&
                        (song->key == 10 || song->key == 8) && song->loud <= 50) {
-                song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+                song->rating = song->tempo + song->dance + song->energy;
                 songs.push_back(song);
             }
         } else if (option == "artist") {
-            song->rating = song->tempo + song->dance * 100 + song->energy * 100;
+            song->rating = song->tempo + song->dance + song->energy;
             songs.push_back(song);
         }
     }
