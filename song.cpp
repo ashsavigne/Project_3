@@ -92,7 +92,7 @@ void Playlist::PrintN(int n){
         return;
     }
     if (n > songs.size()){
-        cout << "Your playlist has " << songs.size() << " songs!" << endl;
+        cout << "Your playlist only has " << songs.size() << " songs!" << endl;
 
         for (int i = songs.size() - 1; i > 0; i--) {
             // FIXME for Event and mood - giving an exit code 139 (interrupted by signal 11: SIGSEGV)
@@ -132,9 +132,12 @@ void Song::Deserialize(istringstream& stream) {
     if (!getline(stream, token, ','))
         throw runtime_error("Error: missing artist");
     try{
-        token.erase(0, 2);
-        token.erase(token.size() - 2, 2);
-        this->artist = token;
+         while (token[0] == '\'' || token[0] == '[')
+            token.erase(0, 1);
+        while (token[token.size() - 1] == '\'' || token[0] == '[')
+            token.erase(token.size() - 1, 1);
+
+         this->artist = token;
     }
     catch (out_of_range&){
         this->artist = "null";
