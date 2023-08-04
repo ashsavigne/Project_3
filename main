@@ -78,13 +78,23 @@ void ReadCSV(Playlist& p, const string& opt, const string& adj, bool exp, int ye
 
     string line;
     getline(inFile, line); // ignore header
+    int x = 0;
     while(getline(inFile, line)) {
         if (!line.empty()){
-            istringstream stream(line);
-            Song* newSong = new Song;
-            newSong->Deserialize(stream);
-            p.Insert(newSong, opt, adj, exp, year, artist);
+            if (x == 1000410) {
+                istringstream stream(line);
+                Song* newSong = new Song;
+                newSong->Deserialize(stream);
+                p.Insert(newSong, opt, adj, exp, year, artist);
+            }
+            else {
+                istringstream stream(line);
+                Song* newSong = new Song;
+                newSong->Deserialize(stream);
+                p.Insert(newSong, opt, adj, exp, year, artist);
+            }
         }
+        x++;
     }
 }
 
