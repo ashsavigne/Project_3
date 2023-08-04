@@ -7,6 +7,7 @@ struct Song {
     string album;
     string artist;
     bool exp;
+    int mode;
     int dance;
     int key;
     int energy;
