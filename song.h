@@ -6,8 +6,8 @@ struct Song {
     string name;
     string album;
     string artist;
-    bool exp;
     int mode;
+    bool exp;
     int dance;
     int key;
     int energy;
@@ -22,15 +22,11 @@ public:
 
 class Playlist{
 public:
-    Song* s;
     vector<Song*> songs;
-    void TestPrint(){
-        cout << songs.size();
-    };
-    Playlist() : songs(){}
+    Playlist() : songs({}){}
     void Insert(Song* song, const string& option, const string& adj, bool exp, int year, const string& artist);
-    vector<int> Ratings();
     void PrintAll();
     void PrintN(int n);
+    void Clear();
     ~Playlist();
 };
