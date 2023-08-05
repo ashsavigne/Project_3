@@ -274,17 +274,18 @@ int main() {
             }
 
             counter = 1;
-            cout << "How many songs? (10 - 50): " << endl;
+            cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
             while (num_songs_bool) {
                 cin >> num_songs_option;
                 if (check_num_str(num_songs_option, 2)) {
-                    num_songs = stoi(num_songs_option);
+                    if (num_songs_option != "all")
+                        num_songs = stoi(num_songs_option);
                     num_songs_bool = false;
                 }
                 else
                     counter++;
                 if (counter % 3 == 0 && num_songs_bool) {
-                    cout << "How many songs? (10 - 50): " << endl;
+                    cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
                 }
             }
 
@@ -386,17 +387,18 @@ int main() {
             }
 
             counter = 1;
-            cout << "How many songs? (10 - 50): " << endl;
+            cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
             while (num_songs_bool) {
                 cin >> num_songs_option;
                 if (check_num_str(num_songs_option, 2)) {
-                    num_songs = stoi(num_songs_option);
+                    if (num_songs_option != "all")
+                        num_songs = stoi(num_songs_option);
                     num_songs_bool = false;
                 }
                 else
                     counter++;
                 if (counter % 3 == 0 && num_songs_bool) {
-                    cout << "How many songs? (10 - 50): " << endl;
+                    cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
                 }
             }
 
@@ -507,17 +509,19 @@ int main() {
             }
 
             counter = 1;
-            cout << "How many songs? (10 - 50): " << endl;
+            cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
             while (num_songs_bool) {
                 cin >> num_songs_option;
                 if (check_num_str(num_songs_option, 2)) {
-                    num_songs = stoi(num_songs_option);
+                    if (num_songs_option != "all")
+                        num_songs = stoi(num_songs_option);
                     num_songs_bool = false;
                 }
                 else
                     counter++;
                 if (counter % 3 == 0 && num_songs_bool) {
-                    cout << "How many songs? (10 - 50): " << endl;
+                    cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
+
                 }
             }
 
@@ -600,17 +604,18 @@ int main() {
             }
 
             counter = 1;
-            cout << "How many songs? (10 - 50): " << endl;
+            cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
             while (num_songs_bool) {
                 cin >> num_songs_option;
                 if (check_num_str(num_songs_option, 2)) {
-                    num_songs = stoi(num_songs_option);
+                    if (num_songs_option != "all")
+                        num_songs = stoi(num_songs_option);
                     num_songs_bool = false;
                 }
                 else
                     counter++;
                 if (counter % 3 == 0 && num_songs_bool) {
-                    cout << "How many songs? (10 - 50): " << endl;
+                    cout << "How many songs? (10 - 50, or type \"all\"): " << endl;
                 }
             }
 
