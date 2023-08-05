@@ -310,8 +310,8 @@ int main() {
             p.songs.clear();
             result = 0;
 
-            cout << "Merge Sort time: " << timeMerge.count() << " microseconds" << endl;
-            cout << "Shell Sort time: " << timeShell.count() << " microseconds" << endl;
+            cout << "Merge Sort time: " << setprecision(3) << float(timeMerge.count())/1000.0 << " milliseconds" << endl;
+            cout << "Shell Sort time: " << setprecision(3) << float(timeShell.count())/1000.0 << " milliseconds" << endl;
 
             cout << endl;
         }
@@ -434,8 +434,8 @@ int main() {
             p.songs.clear();
             result = 0;
 
-            cout << "Merge Sort time: " << timeMerge.count() << " microseconds" << endl;
-            cout << "Shell Sort time: " << timeShell.count() << " microseconds" << endl;
+            cout << "Merge Sort time: " << setprecision(3) << float(timeMerge.count())/1000.0 << " milliseconds" << endl;
+            cout << "Shell Sort time: " << setprecision(3) << float(timeShell.count())/1000.0 << " milliseconds" << endl;
 
             cout << endl;
         }
@@ -556,8 +556,8 @@ int main() {
             p.songs.clear();
             result = 0;
 
-            cout << "Merge Sort time: " << timeMerge.count() << " microseconds" << endl;
-            cout << "Shell Sort time: " << timeShell.count() << " microseconds" << endl;
+            cout << "Merge Sort time: " << setprecision(3) << float(timeMerge.count())/1000.0 << " milliseconds" << endl;
+            cout << "Shell Sort time: " << setprecision(3) << float(timeShell.count())/1000.0 << " milliseconds" << endl;
 
             cout << endl;
         }
@@ -565,7 +565,6 @@ int main() {
             // Artist
         else if (result == 4){
             cout << "Enter Artist: " << endl;
-            cin.ignore();
             getline(cin, artist);
 
             cout << "Family Friendly? (Y/N): " << endl;
@@ -640,8 +639,8 @@ int main() {
             p.songs.clear();
             result = 0;
 
-            cout << "Merge Sort time: " << timeMerge.count() << " microseconds" << endl;
-            cout << "Shell Sort time: " << timeShell.count() << " microseconds" << endl;
+            cout << "Merge Sort time: " << setprecision(3) << float(timeMerge.count())/1000.0 << " milliseconds" << endl;
+            cout << "Shell Sort time: " << setprecision(3) << float(timeShell.count())/1000.0 << " milliseconds" << endl;
 
             cout << endl;
         }
